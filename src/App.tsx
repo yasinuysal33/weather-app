@@ -1,25 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import MapWeather from "./components/MapWeather";
+import MainNavigation from "./components/ui/MainNavigation";
+import { useLoadScript } from "@react-google-maps/api";
+import LoadingSpinner from "./components/ui/LoadingSpinner";
+import Footer from "./components/ui/Footer";
+
+type LatLngLiteral = google.maps.LatLngLiteral;
 
 function App() {
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    libraries: ["places"],
+    language: "en",
+  });
+
+  const [newSearchResultCoordinate, setNewSearchResultCoordinate] =
+    useState<LatLngLiteral>();
+  const fetchCoordinate = (coordinate: LatLngLiteral) => {
+    setNewSearchResultCoordinate(coordinate);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!isLoaded ? (
+        <LoadingSpinner />
+      ) : (
+        <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+          <div className="min-h-[95vh]">
+            <MainNavigation onFetchCoordinate={fetchCoordinate} />
+            <MapWeather searchCoordinate={newSearchResultCoordinate} />
+          </div>
+          <div className="min-h-[5vh] rounded-lg">
+            <Footer />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

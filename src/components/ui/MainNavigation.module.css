@@ -1,0 +1,22 @@
+.headerNav {
+  border-radius: 5px;
+  text-shadow: 1px 1px 2px black;
+  color: #6fb3f3;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+.comboboxInput {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
+  color: white;
+  height: 1.5rem;
+  transition: all 1s;
+}
+
+[data-reach-combobox-popover] {
+  border: solid 1px hsla(0, 0%, 0%, 0.25);
+  background: hsla(0, 100%, 100%, 0.99);
+  font-size: 85%;
+  border-radius: 10px;
+}

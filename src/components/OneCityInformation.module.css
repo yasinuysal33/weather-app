@@ -1,0 +1,6 @@
+.cityName {
+  background: linear-gradient(180deg, #95befc 0%, #679cff 100%);
+  background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
+    inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+}
