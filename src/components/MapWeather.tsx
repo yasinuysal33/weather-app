@@ -127,7 +127,7 @@ const MapWeather: FC<{ searchCoordinate: LatLngLiteral | undefined }> = (
   const lastDay = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000 - 20000); //To eliminate the risk of 7 full days in open-meteo I used reduced interval 20 secs
   const [year, month, day] = [
     today.getFullYear(),
-    today.getMonth() + 1,
+    `${today.getMonth() + 1}`.padStart(2, "0"),
     `${today.getDate()}`.padStart(2, "0"),
   ];
 
@@ -135,7 +135,7 @@ const MapWeather: FC<{ searchCoordinate: LatLngLiteral | undefined }> = (
 
   const [lastDayYear, lastDayMonth, lastDayDay] = [
     lastDay.getFullYear(),
-    lastDay.getMonth() + 1,
+    `${lastDay.getMonth() + 1}`.padStart(2, "0"),
     `${lastDay.getDate()}`.padStart(2, "0"),
   ];
 
